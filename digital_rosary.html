@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المسبحة الإلكترونية المبسطة</title>
+    <style>
+        /* خلفية عامة هادئة ومريحة لتبرز الكلمات بوضوح */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #eef2f3, #8e9eab);
+        }
+
+        /* كارت المسبحة النظيف والمزخرف بلمسة ذهبية خفيفة */
+        .card {
+            background: #ffffff;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 460px;
+            max-width: 90%;
+            border: 2px solid #d4af37;
+            position: relative;
+        }
+
+        /* إخفاء الصفحات وتفعيلها بشكل منظم يمنع التداخل */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeInEffect 0.5s ease-in-out;
+        }
+
+        @keyframes fadeInEffect {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* تنسيق الأذكار والنصوص لضمان وضوحها التام */
+        h1 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            line-height: 1.6;
+            margin: 20px 0 40px 0;
+            font-weight: 700;
+        }
+
+        /* تخصيص حجم نص الحديث الشريف ليتناسق مع الكارت */
+        #page1 h1 {
+            font-size: 1.75rem;
+            color: #b21f1f;
+        }
+
+        /* تصميم زر التحكم الموحد والنظيف */
+        button {
+            padding: 12px 45px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* لون زر التالي (ذهبي ملكي هادئ) */
+        .btn-next {
+            background: linear-gradient(135deg, #d4af37, #b89728);
+        }
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* لون زر العودة والأخير (أزرق غامق أنيق) */
+        .btn-return {
+            background: linear-gradient(135deg, #2c3e50, #1a252f);
+        }
+        .btn-return:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(44, 62, 80, 0.3);
+        }
+
+        /* زخرفة علوية وسفلية بسيطة وجميلة */
+        .ornament {
+            font-size: 1.4rem;
+            color: #d4af37;
+            letter-spacing: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="ornament">❖ ⚜ ❖</div>
+
+        <div id="page1" class="page active">
+            <h1>كَلِمَتَانِ خَفِيفَتَانِ عَلَى اللِّسَانِ،<br>ثَقِيلَتَانِ فِي الْمِيزَانِ،<br>حَبِيبَتَانِ إِلَى الرَّحْمَنِ</h1>
+            <button class="btn-next" onclick="goToPage('page2')">التالي</button>
+        </div>
+
+        <div id="page2" class="page">
+            <h1>سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</h1>
+            <button class="btn-next" onclick="goToPage('page3')">التالي</button>
+        </div>
+
+        <div id="page3" class="page">
+            <h1>سُبْحَانَ اللَّهِ الْعَظِيمِ</h1>
+            <button class="btn-return" onclick="goToPage('page1')">العودة</button>
+        </div>
+
+        <div class="ornament" style="margin-top: 30px;">❖ ⚜ ❖</div>
+    </div>
+
+    <script>
+        function goToPage(targetPageId) {
+            // إخفاء الصفحة النشطة حالياً بالكامل
+            const currentPage = document.querySelector('.page.active');
+            if (currentPage) {
+                currentPage.classList.remove('active');
+            }
+
+            // إظهار الصفحة المطلوبة فقط
+            const targetPage = document.getElementById(targetPageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
